@@ -16,3 +16,13 @@ suites:
     run_list:
       - recipe[auto-patch::default]
     attributes:
+      auto-patch:
+        hour: 9
+        minute: 25
+        monthly: 'third saturday'
+  - name: update-now
+    run_list:
+      - recipe[auto-patch::update_now]
+    attributes:
+      auto-patch:
+        now: true

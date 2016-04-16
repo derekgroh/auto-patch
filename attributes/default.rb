@@ -31,3 +31,5 @@ default['auto-patch']['prep']['monthly'] = 'first sunday'
 default['auto-patch']['prep']['splay'] = 1800
 default['auto-patch']['prep']['weekly'] = nil
 default['auto-patch']['prep']['update_updater'] = true
+
+default['auto-patch']['now'] = false
