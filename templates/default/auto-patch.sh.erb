@@ -18,7 +18,7 @@ sleep $[ ( $RANDOM % <%= node["auto-patch"]["splay"] %> )  + 1 ]s
 <% end -%>
 
 <% if node["auto-patch"]["reboot"] -%>
-reboot -h now
+reboot -h 1
 <% end -%>
 
 <% if node["auto-patch"]["once"] -%>
