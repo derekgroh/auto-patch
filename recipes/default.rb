@@ -26,7 +26,12 @@ unless node['auto-patch']['prep']['disable']
     end
   end
 
-  if node['auto-patch']['prep']['weekly']
+  if node['auto-patch']['prep']['once']
+    node.set['auto-patch']['prep']['day'] = "#{node['auto-patch']['prep']['day']}"
+    node.set['auto-patch']['prep']['month'] = "#{node['auto-patch']['prep']['month']}"
+    node.set['auto-patch']['prep']['hour'] = "#{node['auto-patch']['prep']['hour']}"
+    node.set['auto-patch']['prep']['minute'] = "#{node['auto-patch']['prep']['minute']}"
+  elsif node['auto-patch']['prep']['weekly']
     node.set['auto-patch']['prep']['day'] = '*'
     node.set['auto-patch']['prep']['month'] = '*'
     node.set['auto-patch']['prep']['weekday'] = AutoPatch.weekday(node['auto-patch']['prep']['weekly'])
@@ -39,7 +44,7 @@ unless node['auto-patch']['prep']['disable']
     node.set['auto-patch']['prep']['day'] = next_date.day
     node.set['auto-patch']['prep']['month'] = next_date.month
     node.set['auto-patch']['prep']['weekday'] = '*'
-    Chef::Log.info("Auto patch prep scheduled for #{next_date.strftime('%Y-%m-%d')} at #{node['auto-patch']['prep']['hour']}:#{node['auto-patch']['prep']['minute']}")
+    Chef::Log.info("Auto patch prep scheduled or #{next_date.strftime('%Y-%m-%d')} at #{node['auto-patch']['prep']['hour']}:#{node['auto-patch']['prep']['minute']}")
   else
     Chef::Application.fatal!('Missing auto-patch prep monthly or weekly specification.')
   end
@@ -64,7 +69,12 @@ cron_d 'auto-patch-prep' do
 end
 
 unless node['auto-patch']['disable']
-  if node['auto-patch']['weekly']
+  if node['auto-patch']['once']
+    node.set['auto-patch']['prep']['day'] = "#{node['auto-patch']['prep']['day']}"
+    node.set['auto-patch']['prep']['month'] = "#{node['auto-patch']['prep']['month']}"
+    node.set['auto-patch']['prep']['hour'] = "#{node['auto-patch']['prep']['hour']}"
+    node.set['auto-patch']['prep']['minute'] = "#{node['auto-patch']['prep']['minute']}"
+  elsif node['auto-patch']['weekly']
     node.set['auto-patch']['day'] = '*'
     node.set['auto-patch']['month'] = '*'
     node.set['auto-patch']['weekday'] = AutoPatch.weekday(node['auto-patch']['weekly'])

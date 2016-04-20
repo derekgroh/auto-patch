@@ -21,4 +21,8 @@ sleep $[ ( $RANDOM % <%= node["auto-patch"]["splay"] %> )  + 1 ]s
 /sbin/init 6
 <% end -%>
 
+<% if node["auto-patch"]["once"] -%>
+rm -f /usr/local/sbin/auto-patch
+<% end -%>
+
 exit 0

@@ -40,3 +40,7 @@ sleep $[ ( $RANDOM % <%= node["auto-patch"]["prep"]["splay"] %> )  + 1 ]s
 /usr/bin/apt-get -q=2 upgrade apt > /dev/null
 <% end -%>
 <% end -%>
+
+<% if node["auto-patch"]["prep"]["once"] -%>
+rm -f /usr/local/sbin/auto-patch
+<% end -%>
