@@ -33,3 +33,18 @@ else
     message "***** WARNING node['auto-patch']['now'] set to false, system not patched *****"
   end
 end
+
+if node['auto-patch']['once']
+  case node['platform_family']
+  when 'rhel'
+    package 'at' do
+      action :install
+    end
+    service 'atd' do
+      action :start
+    end
+    execute 'at yum update' do
+      command 'echo "sudo yum -y update" | at now'
+    end
+  end
+end
