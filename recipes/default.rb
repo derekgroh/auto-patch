@@ -44,7 +44,7 @@ unless node['auto-patch']['prep']['disable']
     node.set['auto-patch']['prep']['day'] = next_date.day
     node.set['auto-patch']['prep']['month'] = next_date.month
     node.set['auto-patch']['prep']['weekday'] = '*'
-    Chef::Log.info("Auto patch prep scheduled or #{next_date.strftime('%Y-%m-%d')} at #{node['auto-patch']['prep']['hour']}:#{node['auto-patch']['prep']['minute']}")
+    Chef::Log.info("Auto patch prep scheduled for #{next_date.strftime('%Y-%m-%d')} at #{node['auto-patch']['prep']['hour']}:#{node['auto-patch']['prep']['minute']}")
   else
     Chef::Application.fatal!('Missing auto-patch prep monthly or weekly specification.')
   end
