@@ -35,4 +35,3 @@ default['auto-patch']['prep']['update_updater'] = true
 default['auto-patch']['prep']['once'] = false
 
 default['auto-patch']['now'] = false
-default['auto-patch']['once'] = false
