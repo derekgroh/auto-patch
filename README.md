@@ -40,6 +40,7 @@ and a [corresponding cookbook](https://github.com/firstbanco/chef-unattended-upg
 * `node["auto-patch"]["weekly"]` - auto patching occurs once a week on the
   corresponding textual weekday ("monday","tuesday",etc), overrides
   `node["auto-patch"]["monthly"]`, defaults to nil
+* `node["auto-patch"]["now"]`, patches the system immediately, default to false
 
 ### Patch Preparation
 
@@ -60,7 +61,7 @@ and a [corresponding cookbook](https://github.com/firstbanco/chef-unattended-upg
 * `node["auto-patch"]["prep"]["update_updater"]` - updates apt or yum before
   actual patching occurs, defaults to true
 
-## Recipes
+## Recipe
 
 * `recipe[auto-patch]` configures automatic patching
 
@@ -136,6 +137,14 @@ Example role that then could be added to 10pm nodes:
 * Specify `node["auto-patch"]["disable"]` to true
 * If necessary, specify `node["auto-patch"]["prep"]["disable"]` to true
 * Run chef-client on your node
+
+## Recipe
+
+* `recipe[auto-patch::update-now]` performs patching
+
+### Update now
+
+* Specify `node["auto-patch"]["now"]` to true - node will install all updates during each chef run
 
 ## Testing and Development
 
