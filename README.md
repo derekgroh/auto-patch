@@ -144,7 +144,7 @@ Example role that then could be added to 10pm nodes:
 
 ### Update now
 
-* Specify `node["auto-patch"]["now"]` to true - node will install all updates
+* Specify `node["auto-patch"]["now"]` to true - node will install all updates during each chef run
 
 ## Testing and Development
 
