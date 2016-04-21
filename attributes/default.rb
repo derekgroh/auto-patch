@@ -22,6 +22,7 @@ default['auto-patch']['monthly'] = 'first sunday'
 default['auto-patch']['reboot'] = true
 default['auto-patch']['splay'] = 0
 default['auto-patch']['weekly'] = nil
+default['auto-patch']['once'] = false
 
 default['auto-patch']['prep']['clean'] = true
 default['auto-patch']['prep']['disable'] = true
@@ -31,5 +32,6 @@ default['auto-patch']['prep']['monthly'] = 'first sunday'
 default['auto-patch']['prep']['splay'] = 1800
 default['auto-patch']['prep']['weekly'] = nil
 default['auto-patch']['prep']['update_updater'] = true
+default['auto-patch']['prep']['once'] = false
 
 default['auto-patch']['now'] = false
