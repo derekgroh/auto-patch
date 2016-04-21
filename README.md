@@ -72,6 +72,11 @@ and a [corresponding cookbook](https://github.com/firstbanco/chef-unattended-upg
   any splay!)
 * Add `recipe[auto-patch]` to your node's run list
 
+### Update Once
+
+Set `node["auto-patch"]["once"]` attribute to true will set the system to update
+and reboot by default a single instance at the date and time indicated. 
+
 ### Weekly automatic patching
 
 Just use the `node["auto-patch"]["weekly"]` attribute to override the monthly
