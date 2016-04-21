@@ -26,6 +26,7 @@ suites:
     attributes:
       auto-patch:
         now: true
+        once: true
   - name: once
     run_list:
       - recipe[auto-patch::default]
@@ -36,4 +37,3 @@ suites:
         day: 20
         hour: 6
         minute: 30
-  
