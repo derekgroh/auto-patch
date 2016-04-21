@@ -26,3 +26,4 @@ suites:
     attributes:
       auto-patch:
         now: true
+        once: true
