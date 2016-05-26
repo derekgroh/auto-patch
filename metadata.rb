@@ -3,7 +3,7 @@ maintainer 'Brian Flad'
 maintainer_email 'bflad@417@gmail.com'
 license 'Apache 2.0'
 description 'Configures node for automatic patching.'
-version '0.1.11'
+version '0.1.12'
 recipe 'auto-patch', 'Configures node for automatic patching.'
 
 %w(cron).each do |d|
@@ -13,3 +13,6 @@ end
 %w(amazon centos debian fedora redhat scientific ubuntu).each do |os|
   supports os
 end
+
+issues_url 'https://github.com/derekgroh/chef-auto-patch/issues'
+source_url 'https://github.com/derekgroh/chef-auto-patch.git'

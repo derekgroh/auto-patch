@@ -16,6 +16,8 @@
 # limitations under the License.
 
 include_recipe 'cron'
+include_recipe 'auto-patch::update_now' if node['auto-patch']['now'] == true
+include_recipe 'auto-patch::update_once' if node['auto-patch']['once'] == true
 
 unless node['auto-patch']['prep']['disable']
   if node['platform_family'] == 'rhel'
@@ -26,12 +28,7 @@ unless node['auto-patch']['prep']['disable']
     end
   end
 
-  if node['auto-patch']['prep']['once']
-    node.set['auto-patch']['prep']['day'] = "#{node['auto-patch']['prep']['day']}"
-    node.set['auto-patch']['prep']['month'] = "#{node['auto-patch']['prep']['month']}"
-    node.set['auto-patch']['prep']['hour'] = "#{node['auto-patch']['prep']['hour']}"
-    node.set['auto-patch']['prep']['minute'] = "#{node['auto-patch']['prep']['minute']}"
-  elsif node['auto-patch']['prep']['weekly']
+  if node['auto-patch']['prep']['weekly']
     node.set['auto-patch']['prep']['day'] = '*'
     node.set['auto-patch']['prep']['month'] = '*'
     node.set['auto-patch']['prep']['weekday'] = AutoPatch.weekday(node['auto-patch']['prep']['weekly'])
@@ -69,12 +66,7 @@ cron_d 'auto-patch-prep' do
 end
 
 unless node['auto-patch']['disable']
-  if node['auto-patch']['once']
-    node.set['auto-patch']['prep']['day'] = "#{node['auto-patch']['prep']['day']}"
-    node.set['auto-patch']['prep']['month'] = "#{node['auto-patch']['prep']['month']}"
-    node.set['auto-patch']['prep']['hour'] = "#{node['auto-patch']['prep']['hour']}"
-    node.set['auto-patch']['prep']['minute'] = "#{node['auto-patch']['prep']['minute']}"
-  elsif node['auto-patch']['weekly']
+  if node['auto-patch']['weekly']
     node.set['auto-patch']['day'] = '*'
     node.set['auto-patch']['month'] = '*'
     node.set['auto-patch']['weekday'] = AutoPatch.weekday(node['auto-patch']['weekly'])
