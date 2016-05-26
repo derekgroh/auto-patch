@@ -17,6 +17,6 @@ if node['auto-patch']['once']
       command 'echo "sudo yum -y update" | at now'
     end
   when 'ubuntu'
-
+    # WIP
   end
 end
