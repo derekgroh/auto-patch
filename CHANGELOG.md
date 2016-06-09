@@ -1,3 +1,7 @@
+## 0.2.0
+
+* Add features update_once and update_now
+
 ## 0.1.10
 
 * Bugfix: #2 check if constants are already defined
