@@ -22,29 +22,15 @@ if node['auto-patch']['now']
       level :info
       message 'apt-get update performed'
     end
-  end
-  log 'update-now' do
-    level :warn
-    message 'All available updates installed'
+  else
+    log 'update-now failed - platform_family' do
+      level :warn
+      message '***** WARNING platform_family not recognized - update failed *****'
+    end
   end
 else
   log 'update-now failed' do
     level :warn
     message "***** WARNING node['auto-patch']['now'] set to false, system not patched *****"
-  end
-end
-
-if node['auto-patch']['once']
-  case node['platform_family']
-  when 'rhel'
-    package 'at' do
-      action :install
-    end
-    service 'atd' do
-      action :start
-    end
-    execute 'at yum update' do
-      command 'echo "sudo yum -y update" | at now'
-    end
   end
 end
