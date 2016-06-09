@@ -7,9 +7,9 @@
 require 'spec_helper'
 
 describe 'auto-patch::update_once' do
-  context 'when on CentOS 6.7' do
+  context 'when on CentOS' do
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '6.7')
+      runner = ChefSpec::ServerRunner.new(platform: 'rhel')
       runner.converge(described_recipe)
     end
 
@@ -43,9 +43,9 @@ describe 'auto-patch::update_once' do
     end
   end
 
-  context 'when on Ubuntu 12.04' do
+  context 'when on Ubuntu' do
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new(platofrm: 'ubuntu', version: '12.04')
+      runner = ChefSpec::ServerRunner.new(platform: 'ubuntu')
       runner.converge(described_recipe)
     end
 
