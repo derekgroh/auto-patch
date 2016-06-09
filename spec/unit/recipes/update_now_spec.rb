@@ -6,15 +6,60 @@
 
 require 'spec_helper'
 
-describe 'chef-auto-patch::update_now' do
-  context 'When all attributes are default, on an unspecified platform' do
+describe 'auto-patch::update_now' do
+  context 'when on CentOS 6.7' do
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new
+      runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '6.7')
       runner.converge(described_recipe)
     end
 
     it 'converges successfully' do
-      expect { chef_run }.to_not raise_error
+      expect { chef_run.to_not raise_error }
+    end
+
+    it 'runs an execute `Yum update`' do
+      expect do
+        chef_run.to run_execute('Yum update').with(
+          :command => 'yum -y update'
+        )
+      end
+    end
+
+    it 'writes a log `rhel`' do
+      expect do
+        chef_run.to write_log('rhel').with(
+          :level => ':info',
+          :message => 'yum update performed'
+        )
+      end
+    end
+  end
+
+  context 'when on Ubuntu 12.04' do
+    let(:chef_run) do
+      runner = ChefSpec::ServerRunner.new(platofrm: 'ubuntu', version: '12.04')
+      runner.converge(described_recipe)
+    end
+
+    it 'converges successfully' do
+      expect { chef_run.to_not raise_error }
+    end
+
+    it 'runs an execute `apt-get update`' do
+      expect do
+        chef_run.to run_execute('apt-get update').with(
+          :command => 'apt-get -q update'
+        )
+      end
+    end
+
+    it 'writes a log `debian`' do
+      expect do
+        chef_run.to write_log('debian').with(
+          :level => ':info',
+          :message => 'apt-get update performed'
+        )
+      end
     end
   end
 end
