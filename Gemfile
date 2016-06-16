@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rake'
 
-group :de
-
 group :test, :integration do
   gem 'berkshelf', '~> 2.0.14'
 end
