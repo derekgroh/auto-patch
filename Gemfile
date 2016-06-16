@@ -18,12 +18,12 @@ group :integration do
   gem 'test-kitchen', '~> 1.1'
 end
 
-# group :development do
-#   gem 'guard',         '~> 2.0'
-#   gem 'guard-kitchen'
-#   gem 'guard-rubocop', '~> 1.0'
-#   gem 'guard-rspec',   '~> 3.0'
-#   gem 'rb-inotify',    :require => false
-#   gem 'rb-fsevent',    :require => false
-#   gem 'rb-fchange',    :require => false
-# end
+group :development do
+  gem 'guard', '~> 2.0'
+  gem 'guard-kitchen'
+  gem 'guard-rubocop', '~> 1.0'
+  gem 'guard-rspec',   '~> 3.0'
+  gem 'rb-inotify',    :require => false
+  gem 'rb-fsevent',    :require => false
+  gem 'rb-fchange',    :require => false
+end
