@@ -17,7 +17,7 @@ group :integration do
   gem 'busser-serverspec', '~> 0.2.6'
   gem 'kitchen-vagrant', '~> 0.14'
   gem 'test-kitchen', '~> 1.1'
-  gem 'buff-ignore', '= 1.2.0'
+  gem 'buff-ignore', '= 1.1.1'
 end
 
 # group :development do
