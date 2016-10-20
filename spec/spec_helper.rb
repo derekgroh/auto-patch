@@ -2,7 +2,7 @@ require 'chefspec'
 require 'chefspec/berkshelf'
 
 # See https://github.com/sethvargo/chefspec/issues/393
-# ChefSpec::Coverage.start!
+ChefSpec::Coverage.start!
 
 RSpec.configure do |config|
   config.log_level = :error
