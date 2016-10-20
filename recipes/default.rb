@@ -37,7 +37,8 @@ unless node['auto-patch']['prep']['disable']
     next_date = AutoPatch.next_monthly_date(
       node['auto-patch']['prep']['monthly'],
       node['auto-patch']['prep']['hour'],
-      node['auto-patch']['prep']['minute'])
+      node['auto-patch']['prep']['minute']
+    )
     node.set['auto-patch']['prep']['day'] = next_date.day
     node.set['auto-patch']['prep']['month'] = next_date.month
     node.set['auto-patch']['prep']['weekday'] = '*'
@@ -75,7 +76,8 @@ unless node['auto-patch']['disable']
     next_date = AutoPatch.next_monthly_date(
       node['auto-patch']['monthly'],
       node['auto-patch']['hour'],
-      node['auto-patch']['minute'])
+      node['auto-patch']['minute']
+    )
     node.set['auto-patch']['day'] = next_date.day
     node.set['auto-patch']['month'] = next_date.month
     node.set['auto-patch']['weekday'] = '*'
