@@ -2,7 +2,12 @@ language: ruby
 bundler_args: --without integration
 rvm:
   - 2.2.2
-before_script:
-  - bundle exec berks install
+
+# Don't `bundle install` which takes about 1.5 mins
+install: echo "skip bundle install"
+
+
+# before_script:
+#  - bundle exec berks install
 script:
   - bundle exec rake travis
