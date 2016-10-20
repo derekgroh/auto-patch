@@ -1,7 +1,7 @@
 language: ruby
 bundler_args: --without integration
 rvm:
-  - 2.2.2
+  - 2.2
 before_script:
   - travis_retry bundle exec berks vendor
 script:
