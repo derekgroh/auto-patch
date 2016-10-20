@@ -27,6 +27,9 @@ tmp/
 # rbenv
 .ruby-version
 
+# rubocop
+.rubocop_todo.yml
+
 # Test Kitchen
 .kitchen/
 .kitchen.local.yml
